@@ -42,8 +42,6 @@ RDEPENDS:${PN}-system = " \
         phosphor-sel-logger \
         phosphor-virtual-sensor \
         ipmitool \
-        webui-vue \
-        lsof \
         phosphor-ipmi-ipmb \
         phosphor-host-postd \
         phosphor-post-code-manager \
