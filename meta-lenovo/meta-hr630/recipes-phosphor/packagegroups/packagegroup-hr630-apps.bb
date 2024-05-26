@@ -33,7 +33,7 @@ RDEPENDS:${PN}-fans = " \
 
 SUMMARY:${PN}-flash = "hr630 Flash"
 RDEPENDS:${PN}-flash = " \
-        phosphor-software-manager \
+        phosphor-ipmi-flash \
         "
 
 SUMMARY:${PN}-system = "hr630 System"
