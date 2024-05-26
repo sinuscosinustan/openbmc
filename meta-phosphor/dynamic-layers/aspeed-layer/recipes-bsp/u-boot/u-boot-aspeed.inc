@@ -9,9 +9,6 @@ SRC_URI:append:aspeed:df-obmc-ubi-fs = " \
     file://0005-config-ast-common-Fall-back-to-secondary-flash-on-fa.patch \
     "
 
-SRC_URI:append:aspeed:df-isolate-bmc = " \
-    file://0001-aspeed-Disable-unnecessary-features.patch \
-    "
 SRC_URI:append:aspeed:df-aspeednic-use-mac2 = " \
     file://0002-board-aspeed-aspeednic-Use-MAC2-for-networking.patch \
     "
