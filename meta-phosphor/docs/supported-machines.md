@@ -22,6 +22,7 @@ covered by [Jenkins](https://jenkins.openbmc.org/job/ci-openbmc/) CI testing.
   * e3c256d4i
   * romed8hm3
   * spc621d8hm3
+  * x470d4u
   * x570d4u
 * bytedance
   * g220a

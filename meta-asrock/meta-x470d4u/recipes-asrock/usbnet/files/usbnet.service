@@ -1,0 +1,13 @@
+[Unit]
+Description=Ethernet over USB gadget device
+StartLimitIntervalSec=20
+StartLimitBurst=3
+
+[Service]
+ExecStart=/usr/sbin/usbnet.sh
+Restart=on-failure
+RestartMode=direct
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+!!!IMPORTANT!!!
+
+The X470D4U is available in multiple variants. If you have an X470D4U2-2T or
+X470D4U2/1N1 and want to use features that differ from the default version,
+please note that these feature may not be available!
+
+Please make sure to select the correct SPI size include in conf/local.conf.
+
+For more information, please see the README.md file in meta-asrock/meta-x470d4u.
+
+Example build invocations:
+
+bitbake obmc-phosphor-image
