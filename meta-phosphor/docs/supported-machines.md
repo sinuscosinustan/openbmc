@@ -18,6 +18,7 @@ covered by [Jenkins](https://jenkins.openbmc.org/job/ci-openbmc/) CI testing.
   * mtjefferson
   * mtmitchell-dcscm
 * asrock
+  * altrad8
   * e3c246d4i
   * e3c256d4i
   * romed8hm3

@@ -1,0 +1,7 @@
+[Unit]
+Description=Ampere Computing LLC host reset ACK
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/ampere_power_util.sh reset_ack
+SyslogIdentifier=ampere_host_reset_ack

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# shellcheck source=meta-asrock/meta-ampere/meta-common/recipes-phosphor/state/phosphor-state-manager/ampere-state-helpers
+source /usr/libexec/phosphor-state-manager/ampere-state-helpers
+
+/usr/sbin/ampere_power_util.sh shutdown_ack
+get_host_status
+
+if [ "$host_status" == "off" ]
+then
+    echo "Power off success"
+    msg="System power is off"
+    echo "${msg}"
+    add_sel "${msg}" "Info"
+    exit 0
+else
+    msg="Failed to set power off"
+    echo "${msg}"
+    add_sel "${msg}" "Error"
+    exit 1
+fi

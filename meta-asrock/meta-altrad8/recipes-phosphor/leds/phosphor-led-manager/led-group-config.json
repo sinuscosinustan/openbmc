@@ -1,0 +1,116 @@
+{
+	"leds": [
+		{
+			"group": "bmc_booted",
+			"members": [
+				{
+					"Name": "heartbeat",
+					"Action": "Blink",
+					"Priority": "Blink",
+					"DutyOn": 50,
+					"Period": 1000
+				}
+			]
+		},
+		{
+			"group": "gpio_fault",
+			"members": [
+				{
+					"Name": "fault",
+					"Action": "On",
+					"DutyOn": 50,
+					"Period": 0,
+					"Priority": "On"
+				}
+			]
+		},
+		{
+			"group": "enclosure_identify",
+			"members": [
+				{
+					"Name": "identify",
+					"Action": "On",
+					"Priority": "On",
+					"DutyOn": 50,
+					"Period": 1000
+				}
+			]
+		},
+		{
+			"group": "enclosure_identify_blink",
+			"members": [
+				{
+					"Name": "identify",
+					"Action": "Blink",
+					"Priority": "On",
+					"DutyOn": 50,
+					"Period": 1000
+				}
+			]
+		},
+		{
+			"group": "power_on",
+			"members": []
+		},
+		{
+			"group": "fan1_fault",
+			"members": [
+				{
+					"Name": "fan1_fault_red",
+					"Action": "Blink",
+					"Priority": "Blink",
+					"DutyOn": 50,
+					"Period": 1000
+				}
+			]
+		},
+		{
+			"group": "fan2_fault",
+			"members": [
+				{
+					"Name": "fan2_fault_red",
+					"Action": "Blink",
+					"Priority": "Blink",
+					"DutyOn": 50,
+					"Period": 1000
+				}
+			]
+		},
+		{
+			"group": "fan3_fault",
+			"members": [
+				{
+					"Name": "fan3_fault_red",
+					"Action": "Blink",
+					"Priority": "Blink",
+					"DutyOn": 50,
+					"Period": 1000
+				}
+			]
+		},
+		{
+			"group": "fan4_fault",
+			"members": [
+				{
+					"Name": "fan4_fault_red",
+					"Action": "Blink",
+					"Priority": "Blink",
+					"DutyOn": 50,
+					"Period": 1000
+				}
+			]
+		},
+		{
+			"group": "fan5_fault",
+			"members": [
+				{
+					"Name": "fan5_fault_red",
+					"Action": "Blink",
+					"Priority": "Blink",
+					"DutyOn": 50,
+					"Period": 1000
+				}
+			]
+		}
+	]
+}

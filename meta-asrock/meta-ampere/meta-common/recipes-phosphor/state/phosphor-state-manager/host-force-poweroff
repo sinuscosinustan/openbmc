@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# shellcheck source=meta-asrock/meta-ampere/meta-common/recipes-phosphor/state/phosphor-state-manager/ampere-state-helpers
+source /usr/libexec/phosphor-state-manager/ampere-state-helpers
+
+msg="Execute host force power off"
+echo "${msg}"
+add_sel "${msg}" "Info"
+
+# Get initial host status
+get_host_status
+
+if [ "$host_status" == "on" ]; then
+	/usr/sbin/ampere_power_util.sh force_off
+
+	# Set host state to off
+	msg="Host system power is off"
+	echo "${msg}"
+	add_sel "${msg}" "Info"
+
+	# Wait for the host to power off
+	sleep 10s
+
+	# Get host status again after attempting to power off
+	get_host_status
+
+	if [ "$host_status" != "off" ]; then
+		msg="Host force power off failed"
+		echo "${msg}"
+		add_sel "${msg}" "Error"
+		exit 1
+	fi
+fi
+
+exit 0

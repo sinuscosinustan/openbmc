@@ -1,0 +1,21 @@
+#!/bin/bash
+
+TARGET_NAME="obmc-chassis-poweron@0.target"
+RETRY=30
+count=0
+
+while [ $count -lt $RETRY ]; do
+    status=$(systemctl is-active "$TARGET_NAME")
+    if [ "$status" == "active" ]; then
+        systemctl restart "phosphor-discover-system-state@0.service"
+        echo "Host0 doing Power Policy"
+        exit 0
+    else
+        echo "Waiting for $TARGET_NAME to become active..."
+    fi
+    sleep 1
+    count=$((count+1))
+done
+
+echo "Timeout waiting for $TARGET_NAME"
+exit 1

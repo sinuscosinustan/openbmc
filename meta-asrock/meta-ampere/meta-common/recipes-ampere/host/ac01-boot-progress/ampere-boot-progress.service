@@ -1,0 +1,6 @@
+[Unit]
+Description=Ampere Altra Boot Progress Handling
+
+[Service]
+ExecStart=/usr/sbin/ampere_boot_progress.sh
+SyslogIdentifier=ampere-boot-progress

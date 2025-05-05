@@ -1,0 +1,249 @@
+1: &TEMP_DEFAULTS
+  sensorType: 0x01
+  entityID: 0x06
+  path: /xyz/openbmc_project/sensors/temperature/TEMP_CARD_SIDE
+  sensorReadingType: 0x01
+  unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
+  scale: 0
+  offsetB: 0
+  bExp: 0
+  rExp: 0
+  mutability: Mutability::Read
+  serviceInterface: org.freedesktop.DBus.Properties
+  readingType: readingData
+  interfaces:
+    xyz.openbmc_project.Sensor.Value:
+      Value:
+        Offsets:
+          0xFF:
+            type: double
+2:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/TEMP_CORE_VRD
+3:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/TEMP_DIMM_A1
+4:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/TEMP_DIMM_B1
+5:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/TEMP_DIMM_C1
+6:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/TEMP_DIMM_D1
+7:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/TEMP_DIMM_E1
+8:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/TEMP_DIMM_F1
+9:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/TEMP_DIMM_G1
+10:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/TEMP_DIMM_H1
+11:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/TEMP_DIMM_VRD
+12:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/TEMP_M2_1
+13:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/TEMP_M2_2
+14:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/TEMP_MB
+15:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/TEMP_OCU1
+16:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/TEMP_OCU2
+17:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/TEMP_RCA_VRD
+18:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/TEMP_SOC
+19:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/TEMP_SOC_VRD
+20:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/TEMP_TR1
+21:
+    <<: *TEMP_DEFAULTS
+    path: /xyz/openbmc_project/sensors/temperature/TEMP_X550
+22: &FAN_DEFAULTS
+  entityID: 0x1D
+  sensorType: 0x04
+  path: /xyz/openbmc_project/sensors/fan_tach/FAN1
+  sensorReadingType: 0x01
+  multiplierM: 200
+  offsetB: 0
+  rExp: 0
+  unit: xyz.openbmc_project.Sensor.Value.Unit.RPMS
+  mutability: Mutability::Write|Mutability::Read
+  serviceInterface: org.freedesktop.DBus.Properties
+  readingType: readingData
+  interfaces:
+    xyz.openbmc_project.Sensor.Value:
+      Value:
+        Offsets:
+          0x0:
+            type: double
+23:
+    <<: *FAN_DEFAULTS
+    path: /xyz/openbmc_project/sensors/fan_tach/FAN1_1
+24:
+    <<: *FAN_DEFAULTS
+    path: /xyz/openbmc_project/sensors/fan_tach/FAN2
+25:
+    <<: *FAN_DEFAULTS
+    path: /xyz/openbmc_project/sensors/fan_tach/FAN2_2
+26:
+    <<: *FAN_DEFAULTS
+    path: /xyz/openbmc_project/sensors/fan_tach/FAN3
+27:
+    <<: *FAN_DEFAULTS
+    path: /xyz/openbmc_project/sensors/fan_tach/FAN3_1
+28:
+    <<: *FAN_DEFAULTS
+    path: /xyz/openbmc_project/sensors/fan_tach/FAN4
+29:
+    <<: *FAN_DEFAULTS
+    path: /xyz/openbmc_project/sensors/fan_tach/FAN4_1
+30:
+    <<: *FAN_DEFAULTS
+    path: /xyz/openbmc_project/sensors/fan_tach/FAN5
+31:
+    <<: *FAN_DEFAULTS
+    path: /xyz/openbmc_project/sensors/fan_tach/FAN5_1
+32: &VOLTAGE_DEFAULTS
+  entityID: 0x13
+  sensorType: 0x02
+  path: /xyz/openbmc_project/sensors/voltage/P0V6_VTT0123
+  sensorReadingType: 0x01
+  multiplierM: 4
+  unit: xyz.openbmc_project.Sensor.Value.Unit.Volts
+  serviceInterface: org.freedesktop.DBus.Properties
+  readingType: readingData
+  interfaces:
+    xyz.openbmc_project.Sensor.Value:
+      Value:
+        Offsets:
+          0xFF:
+            type: double
+33:
+    <<: *VOLTAGE_DEFAULTS
+    multiplierM: 3
+    rExp: -2
+    path: /xyz/openbmc_project/sensors/voltage/P0V6_VTT4567
+34:
+    <<: *VOLTAGE_DEFAULTS
+    multiplierM: 7
+    path: /xyz/openbmc_project/sensors/voltage/P0V75_PCP_CPU
+35:
+    <<: *VOLTAGE_DEFAULTS
+    multiplierM: 3
+    rExp: -2
+    path: /xyz/openbmc_project/sensors/voltage/P0V85_VDDC_RCA
+36:
+    <<: *VOLTAGE_DEFAULTS
+    multiplierM: 5
+    rExp: -3
+    path: /xyz/openbmc_project/sensors/voltage/P0V8_VDDC_SOC
+37:
+    <<: *VOLTAGE_DEFAULTS
+    multiplierM: 2
+    rExp: -2
+    path: /xyz/openbmc_project/sensors/voltage/P12V
+38:
+    <<: *VOLTAGE_DEFAULTS
+    multiplierM: 1
+    rExp: -2
+    path: /xyz/openbmc_project/sensors/voltage/P1V2_VDDQ0123
+39:
+    <<: *VOLTAGE_DEFAULTS
+    multiplierM: 1
+    rExp: -2
+    path: /xyz/openbmc_project/sensors/voltage/P1V2_VDDQ4567
+40:
+    <<: *VOLTAGE_DEFAULTS
+    multiplierM: 1
+    rExp: -2
+    path: /xyz/openbmc_project/sensors/voltage/P1V5_VDDH
+41:
+    <<: *VOLTAGE_DEFAULTS
+    multiplierM: 1
+    rExp: -2
+    path: /xyz/openbmc_project/sensors/voltage/P1V8_PCP
+42:
+    <<: *VOLTAGE_DEFAULTS
+    multiplierM: 1
+    rExp: -2
+    path: /xyz/openbmc_project/sensors/voltage/P1V8_VDDH
+43:
+    <<: *VOLTAGE_DEFAULTS
+    multiplierM: 1
+    rExp: -2
+    path: /xyz/openbmc_project/sensors/voltage/P3V3
+44:
+    <<: *VOLTAGE_DEFAULTS
+    multiplierM: 2
+    rExp: -2
+    path: /xyz/openbmc_project/sensors/voltage/P3V3_SOC
+45:
+    <<: *VOLTAGE_DEFAULTS
+    multiplierM: 1
+    rExp: -2
+    path: /xyz/openbmc_project/sensors/voltage/P5V
+46:
+    <<: *VOLTAGE_DEFAULTS
+    multiplierM: 1
+    rExp: -2
+    path: /xyz/openbmc_project/sensors/voltage/P5V_SB
+47:
+    <<: *VOLTAGE_DEFAULTS
+    multiplierM: 1
+    rExp: -2
+    path: /xyz/openbmc_project/sensors/voltage/VBAT
+48: &PWR_DEFAULTS
+    sensorType: 0x08
+    path: /xyz/openbmc_project/sensors/power/PWR_CORE_VRD
+    entityID: 19
+    entityInstance: 39
+    sensorReadingType: 0x01
+    multiplierM: 200
+    offsetB: 0
+    bExp: 0
+    unit: xyz.openbmc_project.Sensor.Value.Unit.Watts
+    rExp: -2
+    serviceInterface: org.freedesktop.DBus.Properties
+    readingType: readingData
+    interfaces:
+      xyz.openbmc_project.Sensor.Value:
+        Value:
+          Offsets:
+            0xFF:
+              type: double
+49:
+    <<: *PWR_DEFAULTS
+    path: /xyz/openbmc_project/sensors/power/PWR_DIMM_VRD1
+50:
+    <<: *PWR_DEFAULTS
+    multiplierM: 39
+    path: /xyz/openbmc_project/sensors/power/PWR_DIMM_VRD2
+51:
+    <<: *PWR_DEFAULTS
+    multiplierM: 39
+    path: /xyz/openbmc_project/sensors/power/PWR_RCA_VRD
+52:
+    <<: *PWR_DEFAULTS
+    multiplierM: 4
+    rExp: 0
+    offsetB: 2 
+    path: /xyz/openbmc_project/sensors/power/PWR_SOC_IO

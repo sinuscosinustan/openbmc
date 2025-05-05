@@ -1,0 +1,19 @@
+#!/bin/bash
+# Handle chassis and host power state for chassis poweron failure.
+
+# shellcheck source=meta-asrock/meta-ampere/meta-common/recipes-phosphor/state/phosphor-state-manager/ampere-state-helpers
+source /usr/libexec/phosphor-state-manager/ampere-state-helpers
+
+get_host_status
+
+if [ "$host_status" == "off" ]
+then
+    # Stop obmc-chassis-poweron.target to avoid chassis-state-manager to set power state to On.
+    /bin/systemctl stop obmc-chassis-poweron@0.target
+
+    # Set chassis power state to Off.
+    /bin/sh -c "busctl set-property $(mapper get-service /xyz/openbmc_project/state/chassis0) \
+        /xyz/openbmc_project/state/chassis0 \
+        xyz.openbmc_project.State.Chassis CurrentPowerState \
+        s xyz.openbmc_project.State.Chassis.PowerState.Off"
+fi

@@ -1,0 +1,9 @@
+{
+    "gpio_definitions": [
+        {
+            "name": "button-identify-n",
+            "pin": "G1",
+            "direction": "in"
+        }
+    ]
+}

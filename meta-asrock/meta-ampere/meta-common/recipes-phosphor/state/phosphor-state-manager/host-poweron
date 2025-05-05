@@ -1,0 +1,35 @@
+#!/bin/bash
+# shellcheck disable=SC2086
+
+# shellcheck source=meta-asrock/meta-ampere/meta-common/recipes-phosphor/state/phosphor-state-manager/ampere-state-helpers
+source /usr/libexec/phosphor-state-manager/ampere-state-helpers
+
+msg="Execute host power on"
+echo "${msg}"
+add_sel "${msg}" "Info"
+
+set_gpio spi0-program-sel 1
+set_gpio ps-atx-on-n 0
+set_gpio bmc-ready 0
+set_gpio control-power-n 0
+sleep 0.2
+set_gpio control-power-n 1
+
+# Wait for the host to power on
+sleep 2s
+
+get_host_status
+
+if [ "$host_status" == "on" ]
+then
+    echo "Host power on success"
+    msg="Host system power is on"
+    echo "${msg}"
+    add_sel "${msg}" "Info"
+    exit 0;
+else
+    msg="Failed to set host power on"
+    echo "${msg}"
+    add_sel "${msg}" "Error"
+    exit 1
+fi

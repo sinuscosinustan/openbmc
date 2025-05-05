@@ -1,0 +1,59 @@
+#!/bin/bash
+
+# shellcheck source=meta-asrock/meta-ampere/meta-common/recipes-phosphor/state/phosphor-state-manager/ampere-state-helpers
+source /usr/libexec/phosphor-state-manager/ampere-state-helpers
+
+msg="Execute host power cycle"
+echo "${msg}"
+add_sel "${msg}" "Info"
+
+# Get initial host status
+get_host_status
+
+# Current power is ON, cycle do OFF to ON. If current power is OFF then do ON
+if [ "$host_status" == "on" ]; then
+
+    /usr/libexec/phosphor-state-manager/host-poweroff
+
+    # Set host state to off
+    msg="Host system power is off"
+    echo "${msg}"
+    add_sel "${msg}" "Info"
+
+    # Wait for the host to power off
+    sleep 10s
+
+    # Get host status again after attempting to power off
+    get_host_status
+
+    if [ "$host_status" != "off" ]; then
+        msg="Host power cycle failed, fail to set host  power off"
+        echo "${msg}"
+        add_sel "${msg}" "Error"
+        exit 1
+    fi
+fi
+
+if [ "$host_status" != "on" ]; then
+
+    /usr/libexec/phosphor-state-manager/host-poweron
+
+    # Get host status again after attempting to power on
+    get_host_status
+
+    if [ "$host_status" != "on" ]; then
+        msg="Host power cycle failed, fail to set host power on"
+        echo "${msg}"
+        add_sel "${msg}" "Error"
+        exit 1
+    fi
+
+    msg="Host system power is on"
+    echo "${msg}"
+    add_sel "${msg}" "Info"
+fi
+
+msg="Host power cycle success"
+echo "${msg}"
+add_sel "${msg}" "Info"
+exit 0

@@ -1,0 +1,7 @@
+[Match]
+Name=usb0
+[Network]
+LinkLocalAddressing=yes
+IPv6AcceptRA=no
+DHCP=no
+ConfigureWithoutCarrier=yes

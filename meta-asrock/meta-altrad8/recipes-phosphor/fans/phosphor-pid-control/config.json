@@ -1,0 +1,121 @@
+{
+    "sensors": [
+        {
+            "name": "FAN1",
+            "type": "fan",
+            "readPath": "/xyz/openbmc_project/sensors/fan_tach/FAN1",
+            "writePath": "/xyz/openbmc_project/control/fanpwm/pwm1",
+            "min": 0,
+            "max": 255,
+            "ignoreDbusMinMax": true
+        },
+        {
+            "name": "FAN2",
+            "type": "fan",
+            "readPath": "/xyz/openbmc_project/sensors/fan_tach/FAN2",
+            "writePath": "/xyz/openbmc_project/control/fanpwm/pwm2",
+            "min": 0,
+            "max": 255,
+            "ignoreDbusMinMax": true
+        },
+        {
+            "name": "FAN3",
+            "type": "fan",
+            "readPath": "/xyz/openbmc_project/sensors/fan_tach/FAN3",
+            "writePath": "/xyz/openbmc_project/control/fanpwm/pwm3",
+            "min": 0,
+            "max": 255,
+            "ignoreDbusMinMax": true
+        },
+        {
+            "name": "FAN4",
+            "type": "fan",
+            "readPath": "/xyz/openbmc_project/sensors/fan_tach/FAN4",
+            "writePath": "/xyz/openbmc_project/control/fanpwm/pwm4",
+            "min": 0,
+            "max": 255
+        },
+        {
+            "name": "FAN5",
+            "type": "fan",
+            "readPath": "/xyz/openbmc_project/sensors/fan_tach/FAN5",
+            "writePath": "/xyz/openbmc_project/control/fanpwm/pwm5",
+            "min": 0,
+            "max": 255,
+            "ignoreDbusMinMax": true
+        },
+        {
+            "name": "TEMP_SOC",
+            "type": "temp",
+            "readPath": "/xyz/openbmc_project/sensors/temperature/TEMP_SOC",
+            "ignoreDbusMinMax": true,
+            "timeout": 0
+        }
+    ],
+    "zones": [
+        {
+            "id": 0,
+            "minThermalOutput": 30.0,
+            "failsafePercent": 30.0,
+            "cycleIntervalTimeMS": 1000.0,
+            "updateThermalsTimeMS": 1000.0,
+            "pids": [
+                {
+                    "name": "FAN1",
+                    "type": "fan",
+                    "inputs": [
+                        "FAN1",
+                        "FAN2",
+                        "FAN3",
+                        "FAN4",
+                        "FAN5"
+                    ],
+                    "setpoint": 30.0,
+                    "pid": {
+                        "samplePeriod": 1.0,
+                        "proportionalCoeff": 0.0,
+                        "derivativeCoeff": 0.0,
+                        "integralCoeff": 0.0,
+                        "feedFwdOffsetCoeff": 0.0,
+                        "feedFwdGainCoeff": 1.0,
+                        "integralLimit_min": 0.0,
+                        "integralLimit_max": 0.0,
+                        "outLim_min": 3.0,
+                        "outLim_max": 100.0,
+                        "slewNeg": 0.0,
+                        "slewPos": 0.0
+                    }
+                },
+                {
+                    "name": "TEMP_SOC",
+                    "type": "stepwise",
+                    "inputs": [
+                        "TEMP_SOC"
+                    ],
+                    "setpoint": 30.0,
+                    "failsafePercent": 75.0,
+                    "pid": {
+                        "samplePeriod": 1.0,
+                        "positiveHysteresis": 1.0,
+                        "negativeHysteresis": 1.0,
+                        "isCeiling": false,
+                        "reading": {
+                            "0": 40,
+                            "1": 55,
+                            "2": 65,
+                            "3": 75,
+                            "4": 85
+                        },
+                        "output": {
+                            "0": 30,
+                            "1": 40,
+                            "2": 50,
+                            "3": 75,
+                            "4": 100
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
